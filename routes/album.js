@@ -10,23 +10,23 @@ const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
 
 const uploadToCloudinary = async (file) => {
-    // const formData = new FormData();
-    // formData.append("file", file.buffer, file.originalname);
-    // formData.append("upload_preset", "EventManager");
-
-    // const response = await fetch("https://api.cloudinary.com/v1_1/shubh1234/image/upload", {
-    //     method: "POST",
-    //     body: formData,
-    // });
-
     const formData = new FormData();
     formData.append("file", file.buffer, file.originalname);
-    formData.append("upload_preset", "AnkuramMurandnaagr");
+    formData.append("upload_preset", "EventManager");
 
-    const response = await fetch("https://api.cloudinary.com/v1_1/Ankuram/image/upload", {
+    const response = await fetch("https://api.cloudinary.com/v1_1/shubh1234/image/upload", {
         method: "POST",
         body: formData,
     });
+
+    // const formData = new FormData();
+    // formData.append("file", file.buffer, file.originalname);
+    // formData.append("upload_preset", "AnkuramMurandnaagr");
+
+    // const response = await fetch("https://api.cloudinary.com/v1_1/Ankuram/image/upload", {
+    //     method: "POST",
+    //     body: formData,
+    // });
 
     const data = await response.json();
     return data.secure_url; 
